@@ -1,0 +1,373 @@
+
+/* =========================================
+   MUSEO V2 - PREMIUM DASHBOARD
+   ========================================= */
+
+/* 상단 날짜 및 상태 */
+
+.dashboard-header-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.dashboard-date {
+  display: inline-flex;
+  align-items: center;
+  min-height: 42px;
+  padding: 0 18px;
+  background: #fffdfa;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: #514f49;
+  font-size: 12px;
+  font-weight: 700;
+  box-shadow: var(--shadow);
+}
+
+/* KPI 카드 */
+
+.dashboard-kpis {
+  margin-bottom: 22px;
+}
+
+.dashboard-kpis .card {
+  min-height: 148px;
+  padding: 24px 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.dashboard-kpis .card-label {
+  margin-bottom: 12px;
+  font-size: 13px;
+}
+
+.dashboard-kpis .card-value {
+  font-size: clamp(23px, 2.1vw, 32px);
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+}
+
+.kpi-change {
+  margin-top: 12px;
+  color: #29845a;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+/* 매출 카드 강조 */
+
+.dashboard-kpis .card:nth-child(2) {
+  background: linear-gradient(
+    135deg,
+    #1b4838 0%,
+    #0d3326 100%
+  );
+  border-color: #1b4838;
+}
+
+.dashboard-kpis .card:nth-child(2) .card-label {
+  color: #e3e8e1;
+}
+
+.dashboard-kpis .card:nth-child(2) .card-value {
+  color: #ffffff;
+}
+
+.dashboard-kpis .card:nth-child(2) .kpi-change {
+  color: #a6dfb6;
+}
+
+/* 기존 common.css의 네 번째 카드 강조 해제 */
+
+.dashboard-kpis .card:nth-child(4) {
+  background: #fff;
+  border-color: var(--border);
+}
+
+.dashboard-kpis .card:nth-child(4) .card-label {
+  color: #817e75;
+}
+
+.dashboard-kpis .card:nth-child(4) .card-value {
+  color: #1a3028;
+}
+
+/* 분석 영역 */
+
+.dashboard-analytics {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr)
+                         minmax(0, 1fr)
+                         minmax(0, 1fr);
+  gap: 18px;
+  align-items: stretch;
+}
+
+.dashboard-analytics .panel {
+  min-width: 0;
+  min-height: 310px;
+  padding: 24px;
+}
+
+/* 패널 헤더 */
+
+.panel-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 22px;
+}
+
+.panel-heading h2 {
+  margin: 0;
+}
+
+.chart-legend {
+  display: flex;
+  gap: 12px;
+  color: #77766e;
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+.chart-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.legend-dot {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  border-radius: 3px;
+}
+
+.legend-dot.yesterday {
+  background: #dfcba7;
+}
+
+.legend-dot.today {
+  background: #174735;
+}
+
+/* 시간대별 차트 */
+
+.chart-container {
+  position: relative;
+  width: 100%;
+  height: 230px;
+}
+
+.chart-container canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* 카테고리 도넛 차트 */
+
+.category-content {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  min-height: 230px;
+}
+
+.donut-container {
+  position: relative;
+  flex: 0 0 52%;
+  min-width: 0;
+  max-width: 230px;
+  aspect-ratio: 1 / 1;
+}
+
+.donut-container canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.donut-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  pointer-events: none;
+}
+
+.donut-center small {
+  color: #88837a;
+  font-size: 11px;
+}
+
+.donut-center strong {
+  color: #173b2d;
+  font-size: 21px;
+  font-weight: 800;
+}
+
+.category-legend {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 15px;
+  min-width: 0;
+}
+
+.category-legend > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  font-size: 11px;
+  color: #6c6a63;
+}
+
+.category-legend strong {
+  color: #27342b;
+  font-size: 12px;
+}
+
+/* 최근 주문 */
+
+.view-all {
+  color: #786a53;
+  font-size: 11px;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.view-all:hover {
+  color: #173b2d;
+}
+
+.recent-order {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: 12px;
+  padding: 17px 0;
+  border-bottom: 1px solid #eee8df;
+}
+
+.recent-order:last-child {
+  border-bottom: 0;
+}
+
+.recent-order > div {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.recent-order > div strong {
+  color: #26372d;
+  font-size: 13px;
+}
+
+.recent-order small {
+  color: #8c887e;
+  font-size: 10px;
+}
+
+.recent-order > strong {
+  color: #28342c;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.recent-order .badge {
+  font-size: 10px;
+  padding: 6px 9px;
+}
+
+/* 반응형 */
+
+@media (max-width: 1450px) {
+  .dashboard-analytics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .chart-panel {
+    grid-column: 1 / -1;
+  }
+
+  .category-content {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 950px) {
+  .dashboard-analytics {
+    grid-template-columns: 1fr;
+  }
+
+  .chart-panel {
+    grid-column: auto;
+  }
+
+  .dashboard-analytics .panel {
+    min-height: auto;
+  }
+
+  .donut-container {
+    flex-basis: 220px;
+  }
+}
+
+@media (max-width: 600px) {
+  .dashboard-header-actions {
+    justify-content: flex-start;
+  }
+
+  .dashboard-kpis .card {
+    min-height: 130px;
+    padding: 17px;
+  }
+
+  .dashboard-kpis .card-label {
+    font-size: 11px;
+  }
+
+  .dashboard-kpis .card-value {
+    font-size: 22px;
+  }
+
+  .dashboard-analytics .panel {
+    padding: 18px;
+  }
+
+  .category-content {
+    flex-direction: column;
+  }
+
+  .donut-container {
+    flex: 0 0 auto;
+    width: 200px;
+  }
+
+  .category-legend {
+    width: 100%;
+  }
+
+  .recent-order {
+    gap: 7px;
+  }
+
+  .recent-order > strong {
+    font-size: 11px;
+  }
+}
