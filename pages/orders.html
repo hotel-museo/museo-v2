@@ -5,159 +5,19 @@
   <meta charset="UTF-8">
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0">
-  <title>MUSEO V2 | 주문관리</title>
 
+  <title>MUSEO V2 | 룸서비스 주문관리</title>
+
+  <!-- 공통 CSS -->
   <link rel="stylesheet" href="../css/common.css">
 
-  <style>
-    .order-toolbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 22px;
-      flex-wrap: wrap;
-    }
-
-    .order-tabs {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-
-    .order-tab {
-      border: 1px solid var(--border);
-      background: white;
-      border-radius: 8px;
-      padding: 10px 16px;
-      color: var(--text);
-      font-size: 12px;
-      cursor: pointer;
-    }
-
-    .order-tab.active {
-      background: var(--navy);
-      color: white;
-      border-color: var(--navy);
-    }
-
-    .order-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .order-card {
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      overflow: hidden;
-    }
-
-    .order-card-header {
-      padding: 20px;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .order-number {
-      font-size: 12px;
-      color: var(--muted);
-      margin-bottom: 7px;
-    }
-
-    .order-room {
-      font-size: 20px;
-      font-weight: 800;
-    }
-
-    .order-card-body {
-      padding: 20px;
-    }
-
-    .order-time {
-      font-size: 12px;
-      color: var(--muted);
-      margin-bottom: 16px;
-    }
-
-    .order-menu-item {
-      display: flex;
-      justify-content: space-between;
-      gap: 10px;
-      font-size: 13px;
-      padding: 10px 0;
-      border-bottom: 1px solid #f0f2f5;
-    }
-
-    .order-request {
-      background: #f6f8fb;
-      border-radius: 8px;
-      padding: 12px;
-      font-size: 12px;
-      margin-top: 15px;
-      line-height: 1.6;
-    }
-
-    .order-total {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 20px;
-      font-size: 15px;
-      font-weight: 800;
-    }
-
-    .order-card-footer {
-      padding: 15px 20px;
-      border-top: 1px solid var(--border);
-      display: flex;
-      gap: 8px;
-    }
-
-    .action-btn {
-      flex: 1;
-      border: 0;
-      border-radius: 8px;
-      padding: 12px 10px;
-      cursor: pointer;
-      font-weight: 700;
-      font-size: 12px;
-    }
-
-    .btn-primary {
-      background: #17283d;
-      color: white;
-    }
-
-    .btn-secondary {
-      background: #edf1f6;
-      color: #17283d;
-    }
-
-    .btn-danger {
-      background: #fff0f0;
-      color: #c0392b;
-    }
-
-    @media (max-width: 1250px) {
-      .order-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-
-    @media (max-width: 800px) {
-      .order-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+  <!-- 주문관리 전용 CSS -->
+  <link rel="stylesheet" href="../css/pages/orders.css">
 </head>
 
 <body>
 
+  <!-- 관리자 사이드바 -->
   <aside class="sidebar">
     <div class="brand">
       MUSEO
@@ -203,6 +63,7 @@
     </a>
   </aside>
 
+  <!-- 주문관리 메인 -->
   <main class="main">
 
     <div class="topbar">
@@ -212,45 +73,58 @@
           실시간 주문 접수 및 처리 현황
         </div>
       </div>
+
       <div class="status">● DEMO MODE</div>
     </div>
 
+    <!-- 주문 상태 필터 -->
     <div class="order-toolbar">
+
       <div class="order-tabs">
         <button class="order-tab active"
-                onclick="filterOrders('all', this)">
+                data-filter="all">
           전체
         </button>
+
         <button class="order-tab"
-                onclick="filterOrders('new', this)">
+                data-filter="new">
           신규
         </button>
+
         <button class="order-tab"
-                onclick="filterOrders('cooking', this)">
+                data-filter="cooking">
           조리 중
         </button>
+
         <button class="order-tab"
-                onclick="filterOrders('done', this)">
+                data-filter="done">
           완료
         </button>
       </div>
 
-      <div class="status">총 3건 · 예시 주문</div>
+      <div class="status">
+        총 3건 · 예시 주문
+      </div>
     </div>
 
+    <!-- 주문 카드 목록 -->
     <section class="order-grid" id="orderGrid">
 
+      <!-- 신규 주문 -->
       <article class="order-card" data-status="new">
         <div class="order-card-header">
           <div>
             <div class="order-number">ORDER #1024</div>
             <div class="order-room">ROOM 501</div>
           </div>
+
           <span class="badge new">신규 주문</span>
         </div>
 
         <div class="order-card-body">
-          <div class="order-time">주문시간 12:35</div>
+          <div class="order-time">
+            주문시간 12:35
+          </div>
 
           <div class="order-menu-item">
             <span>스테이크 크림 파스타 × 1</span>
@@ -274,31 +148,37 @@
 
         <div class="order-card-footer">
           <button class="action-btn btn-primary"
-                  onclick="demoAction('주문 접수')">
+                  data-action="accept">
             접수
           </button>
+
           <button class="action-btn btn-danger"
-                  onclick="demoAction('주문 거절')">
+                  data-action="reject">
             거절
           </button>
+
           <button class="action-btn btn-secondary"
-                  onclick="demoAction('인쇄')">
+                  data-action="print">
             인쇄
           </button>
         </div>
       </article>
 
+      <!-- 조리 중 주문 -->
       <article class="order-card" data-status="cooking">
         <div class="order-card-header">
           <div>
             <div class="order-number">ORDER #1025</div>
             <div class="order-room">ROOM 803</div>
           </div>
+
           <span class="badge cooking">조리 중</span>
         </div>
 
         <div class="order-card-body">
-          <div class="order-time">주문시간 12:42</div>
+          <div class="order-time">
+            주문시간 12:42
+          </div>
 
           <div class="order-menu-item">
             <span>셰프 추천 세트 × 1</span>
@@ -317,27 +197,32 @@
 
         <div class="order-card-footer">
           <button class="action-btn btn-primary"
-                  onclick="demoAction('조리 완료')">
+                  data-action="complete">
             완료
           </button>
+
           <button class="action-btn btn-secondary"
-                  onclick="demoAction('인쇄')">
+                  data-action="print">
             인쇄
           </button>
         </div>
       </article>
 
+      <!-- 완료 주문 -->
       <article class="order-card" data-status="done">
         <div class="order-card-header">
           <div>
             <div class="order-number">ORDER #1026</div>
             <div class="order-room">ROOM 602</div>
           </div>
+
           <span class="badge done">완료</span>
         </div>
 
         <div class="order-card-body">
-          <div class="order-time">주문시간 12:50</div>
+          <div class="order-time">
+            주문시간 12:50
+          </div>
 
           <div class="order-menu-item">
             <span>마르게리타 피자 × 1</span>
@@ -352,7 +237,7 @@
 
         <div class="order-card-footer">
           <button class="action-btn btn-secondary"
-                  onclick="demoAction('인쇄')">
+                  data-action="print">
             인쇄
           </button>
         </div>
@@ -361,26 +246,8 @@
     </section>
   </main>
 
-  <script>
-    function filterOrders(status, button) {
-      document.querySelectorAll('.order-tab')
-        .forEach(tab => tab.classList.remove('active'));
+  <!-- 주문관리 전용 JS -->
+  <script src="../js/modules/orders/orders.js" defer></script>
 
-      button.classList.add('active');
-
-      document.querySelectorAll('.order-card')
-        .forEach(card => {
-          card.style.display =
-            status === 'all' ||
-            card.dataset.status === status
-              ? ''
-              : 'none';
-        });
-    }
-
-    function demoAction(action) {
-      alert(action + ' 기능은 현재 데모 상태입니다.');
-    }
-  </script>
 </body>
 </html>
