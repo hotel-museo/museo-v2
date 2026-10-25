@@ -3,133 +3,302 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
   <title>MUSEO V2 | Dashboard</title>
 
-  <!-- 공통 디자인 파일 -->
+  <!-- 공통 디자인 -->
   <link rel="stylesheet" href="css/common.css">
+
+  <!-- 대시보드 전용 디자인 -->
+  <link rel="stylesheet" href="css/pages/dashboard.css">
 </head>
 
 <body>
 
   <!-- 관리자 사이드바 -->
   <aside class="sidebar">
+
     <div class="brand">
       MUSEO
       <small>HOTEL OPERATIONS V2</small>
     </div>
 
     <div class="nav-title">OVERVIEW</div>
+
     <a class="nav-item active" href="index.html">
       대시보드
     </a>
 
     <div class="nav-title">F&B MANAGEMENT</div>
+
     <a class="nav-item" href="pages/orders.html">
       주문관리
     </a>
+
     <a class="nav-item" href="pages/menus.html">
       메뉴관리
     </a>
+
     <a class="nav-item" href="pages/sets.html">
       세트메뉴 관리
     </a>
+
     <a class="nav-item" href="pages/translations.html">
       번역관리
     </a>
+
     <a class="nav-item" href="pages/sales.html">
       매출관리
     </a>
 
     <div class="nav-title">HOTEL MANAGEMENT</div>
+
     <a class="nav-item" href="#">
       객실 서비스 (예정)
     </a>
+
     <a class="nav-item" href="#">
       하우스키핑 (예정)
     </a>
+
     <a class="nav-item" href="#">
       시설관리 (예정)
     </a>
 
     <div class="nav-title">SYSTEM</div>
+
     <a class="nav-item" href="#">
       설정 (예정)
     </a>
+
   </aside>
 
-  <!-- 메인 화면 -->
+  <!-- 대시보드 메인 -->
   <main class="main">
 
-    <div class="topbar">
+    <!-- 상단 헤더 -->
+    <header class="topbar">
       <div>
-        <h1>운영 대시보드</h1>
+        <h1>대시보드</h1>
         <div class="subtitle">
-          MUSEO 호텔 통합 운영 현황
+          호텔 F&B 및 룸서비스 운영 현황을
+          한눈에 확인하세요.
         </div>
       </div>
 
-      <div class="status">
-        ● DEMO MODE
-      </div>
-    </div>
+      <div class="dashboard-header-actions">
+        <span class="dashboard-date" id="todayDate">
+          날짜 불러오는 중
+        </span>
 
-    <!-- 운영 현황 카드 -->
-    <section class="cards">
-
-      <div class="card">
-        <div class="card-label">신규 주문</div>
-        <div class="card-value">08</div>
+        <span class="status">
+          ● DEMO MODE
+        </span>
       </div>
+    </header>
 
-      <div class="card">
-        <div class="card-label">진행 중</div>
-        <div class="card-value">05</div>
-      </div>
+    <!-- 핵심 운영 지표 -->
+    <section class="cards dashboard-kpis">
 
-      <div class="card">
-        <div class="card-label">완료 주문</div>
-        <div class="card-value">24</div>
-      </div>
+      <article class="card">
+        <div class="card-label">
+          오늘 주문
+        </div>
 
-      <div class="card">
-        <div class="card-label">오늘 매출</div>
-        <div class="card-value">₩842K</div>
-      </div>
+        <div class="card-value">
+          18건
+        </div>
+
+        <div class="kpi-change">
+          ▲ +28% 전일 대비
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-label">
+          오늘 매출
+        </div>
+
+        <div class="card-value">
+          ₩1,248,000
+        </div>
+
+        <div class="kpi-change">
+          ▲ +32% 전일 대비
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-label">
+          객실 점유율
+        </div>
+
+        <div class="card-value">
+          82%
+        </div>
+
+        <div class="kpi-change">
+          ▲ +5% 전일 대비
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-label">
+          F&B 매출 비중
+        </div>
+
+        <div class="card-value">
+          37%
+        </div>
+
+        <div class="kpi-change">
+          ▲ +6% 전일 대비
+        </div>
+      </article>
 
     </section>
 
-    <!-- 실시간 주문 현황 -->
-    <section class="panel">
-      <h2>실시간 주문 현황 · 예시 데이터</h2>
+    <!-- 분석 영역 -->
+    <section class="dashboard-analytics">
 
-      <div class="order">
-        <div>
-          <div class="room">ROOM 501</div>
-          <div class="menu">스테이크 크림 파스타</div>
-        </div>
-        <span class="badge new">신규 주문</span>
-      </div>
+      <!-- 시간대별 주문 현황 -->
+      <article class="panel chart-panel">
 
-      <div class="order">
-        <div>
-          <div class="room">ROOM 803</div>
-          <div class="menu">셰프 추천 세트</div>
-        </div>
-        <span class="badge cooking">조리 중</span>
-      </div>
+        <div class="panel-heading">
+          <h2>시간대별 주문 현황</h2>
 
-      <div class="order">
-        <div>
-          <div class="room">ROOM 602</div>
-          <div class="menu">마르게리타 피자</div>
+          <div class="chart-legend">
+            <span>
+              <i class="legend-dot yesterday"></i>
+              어제
+            </span>
+
+            <span>
+              <i class="legend-dot today"></i>
+              오늘
+            </span>
+          </div>
         </div>
-        <span class="badge done">완료</span>
-      </div>
+
+        <div class="chart-container">
+          <canvas id="ordersChart"></canvas>
+        </div>
+
+      </article>
+
+      <!-- 주문 카테고리 -->
+      <article class="panel category-panel">
+
+        <h2>주문 카테고리 비중</h2>
+
+        <div class="category-content">
+
+          <div class="donut-container">
+            <canvas id="categoryChart"></canvas>
+
+            <div class="donut-center">
+              <small>총 주문</small>
+              <strong>18건</strong>
+            </div>
+          </div>
+
+          <div class="category-legend">
+
+            <div>
+              <span>파스타</span>
+              <strong>33%</strong>
+            </div>
+
+            <div>
+              <span>피자</span>
+              <strong>22%</strong>
+            </div>
+
+            <div>
+              <span>세트메뉴</span>
+              <strong>17%</strong>
+            </div>
+
+            <div>
+              <span>샐러드</span>
+              <strong>11%</strong>
+            </div>
+
+            <div>
+              <span>기타</span>
+              <strong>17%</strong>
+            </div>
+
+          </div>
+
+        </div>
+
+      </article>
+
+      <!-- 최근 주문 -->
+      <article class="panel recent-orders-panel">
+
+        <div class="panel-heading">
+          <h2>최근 주문</h2>
+
+          <a class="view-all"
+             href="pages/orders.html">
+            전체보기 ›
+          </a>
+        </div>
+
+        <div class="recent-order">
+          <div>
+            <strong>#1028</strong>
+            <small>객실 1203 · 20:41</small>
+          </div>
+
+          <strong>₩52,000</strong>
+
+          <span class="badge cooking">
+            조리 중
+          </span>
+        </div>
+
+        <div class="recent-order">
+          <div>
+            <strong>#1027</strong>
+            <small>객실 806 · 20:33</small>
+          </div>
+
+          <strong>₩43,000</strong>
+
+          <span class="badge new">
+            신규
+          </span>
+        </div>
+
+        <div class="recent-order">
+          <div>
+            <strong>#1026</strong>
+            <small>객실 602 · 20:15</small>
+          </div>
+
+          <strong>₩19,000</strong>
+
+          <span class="badge done">
+            완료
+          </span>
+        </div>
+
+      </article>
 
     </section>
 
   </main>
+
+  <!-- 차트 라이브러리 -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
+
+  <!-- 대시보드 전용 JS -->
+  <script src="js/modules/dashboard/dashboard.js" defer></script>
 
 </body>
 </html>
