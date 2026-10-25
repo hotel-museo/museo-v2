@@ -1,146 +1,272 @@
 
-/* MUSEO V2 - Room Service Orders */
+/* ========================================
+   MUSEO V2
+   PREMIUM ROOM SERVICE ORDER DESIGN
+   ======================================== */
+
+/* 주문 상태 필터 */
 
 .order-toolbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 12px;
-  margin-bottom: 22px;
+  gap: 16px;
+  margin-bottom: 24px;
   flex-wrap: wrap;
 }
 
 .order-tabs {
   display: flex;
-  gap: 8px;
+  gap: 9px;
   flex-wrap: wrap;
 }
 
 .order-tab {
-  border: 1px solid var(--border);
-  background: white;
-  border-radius: 8px;
-  padding: 10px 16px;
-  color: var(--text);
+  min-width: 90px;
+  min-height: 41px;
+  padding: 11px 20px;
+  border: 1px solid #e9e2d8;
+  border-radius: 30px;
+  background: #fff;
+  color: #545b54;
   font-size: 12px;
-  cursor: pointer;
+  font-weight: 700;
+  box-shadow: 0 3px 12px rgba(40, 32, 20, 0.035);
+  transition: all 0.18s ease;
+}
+
+.order-tab:hover {
+  border-color: #c9b18a;
+  background: #faf7f1;
 }
 
 .order-tab.active {
-  background: var(--navy);
-  color: white;
-  border-color: var(--navy);
+  border-color: #123b2d;
+  background: linear-gradient(135deg, #194b39, #0e3025);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(14, 48, 37, 0.15);
 }
+
+/* 주문 카드 배치 */
 
 .order-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 18px;
+  align-items: start;
 }
 
 .order-card {
-  background: white;
-  border: 1px solid var(--border);
-  border-radius: 14px;
   overflow: hidden;
+  min-width: 0;
+  background: #fffdfa;
+  border: 1px solid #e9e1d7;
+  border-radius: 16px;
+  box-shadow: 0 7px 24px rgba(36, 32, 25, 0.065);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
+.order-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(36, 32, 25, 0.095);
+}
+
+/* 카드 상단 */
+
 .order-card-header {
-  padding: 20px;
-  border-bottom: 1px solid var(--border);
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  gap: 10px;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 22px 22px 18px;
+  border-bottom: 1px solid #f0ebe4;
 }
 
 .order-number {
-  font-size: 12px;
-  color: var(--muted);
-  margin-bottom: 7px;
+  margin-bottom: 8px;
+  color: #173a2c;
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: -0.4px;
 }
 
 .order-room {
-  font-size: 20px;
-  font-weight: 800;
+  color: #7b7b73;
+  font-size: 12px;
+  font-weight: 500;
 }
 
+/* 주문 내용 */
+
 .order-card-body {
-  padding: 20px;
+  padding: 20px 22px;
 }
 
 .order-time {
-  font-size: 12px;
-  color: var(--muted);
-  margin-bottom: 16px;
+  margin-bottom: 15px;
+  color: #8b877f;
+  font-size: 11px;
+  text-align: right;
 }
 
 .order-menu-item {
   display: flex;
   justify-content: space-between;
-  gap: 10px;
-  font-size: 13px;
-  padding: 10px 0;
-  border-bottom: 1px solid #f0f2f5;
+  align-items: center;
+  gap: 12px;
+  min-height: 51px;
+  padding: 12px 0;
+  border-bottom: 1px solid #f1ece5;
+  color: #343a34;
+  font-size: 12px;
+  line-height: 1.5;
 }
 
-.order-request {
-  background: #f6f8fb;
-  border-radius: 8px;
-  padding: 12px;
-  font-size: 12px;
-  margin-top: 15px;
-  line-height: 1.6;
+.order-menu-item span {
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
+
+.order-menu-item strong {
+  flex-shrink: 0;
+  color: #242d26;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+/* 고객 요청사항 */
+
+.order-request {
+  margin-top: 17px;
+  padding: 13px 14px;
+  border: 1px solid #f0e9df;
+  border-radius: 9px;
+  background: #f9f6f0;
+  color: #625f58;
+  font-size: 12px;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+
+/* 결제금액 */
 
 .order-total {
   display: flex;
   justify-content: space-between;
-  margin-top: 20px;
-  font-size: 15px;
-  font-weight: 800;
+  align-items: center;
+  gap: 10px;
+  margin-top: 19px;
+  padding-top: 5px;
+  color: #2a312b;
+  font-size: 13px;
+  font-weight: 700;
 }
 
+.order-total span:last-child {
+  color: #173e2e;
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+/* 카드 하단 버튼 */
+
 .order-card-footer {
-  padding: 15px 20px;
-  border-top: 1px solid var(--border);
   display: flex;
-  gap: 8px;
+  gap: 9px;
+  padding: 15px 22px 20px;
+  border-top: 1px solid #f0ebe4;
 }
 
 .action-btn {
   flex: 1;
-  border: 0;
+  min-height: 40px;
+  padding: 11px 9px;
+  border: 1px solid transparent;
   border-radius: 8px;
-  padding: 12px 10px;
-  cursor: pointer;
-  font-weight: 700;
   font-size: 12px;
+  font-weight: 700;
+  transition:
+    background 0.18s ease,
+    transform 0.18s ease;
+}
+
+.action-btn:active {
+  transform: scale(0.98);
 }
 
 .btn-primary {
-  background: var(--navy);
-  color: white;
+  background: #123c2d;
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: #1e5640;
 }
 
 .btn-secondary {
-  background: #edf1f6;
-  color: var(--navy);
+  background: #fffdfa;
+  border-color: #e6ded2;
+  color: #344438;
+}
+
+.btn-secondary:hover {
+  background: #f5f0e8;
 }
 
 .btn-danger {
-  background: #fff0f0;
-  color: #c0392b;
+  background: #fff8f6;
+  border-color: #f0ded9;
+  color: #b25243;
 }
 
-@media (max-width: 1250px) {
+.btn-danger:hover {
+  background: #fcebe7;
+}
+
+/* 접근성 */
+
+.order-tab:focus-visible,
+.action-btn:focus-visible {
+  outline: 3px solid #d0af75;
+  outline-offset: 3px;
+}
+
+/* 반응형 */
+
+@media (max-width: 1350px) {
   .order-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
-@media (max-width: 800px) {
+@media (max-width: 850px) {
   .order-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .order-tabs {
+    width: 100%;
+  }
+
+  .order-tab {
+    min-width: 0;
+    flex: 1;
+    padding: 10px 12px;
+  }
+
+  .order-card-header,
+  .order-card-body {
+    padding-left: 17px;
+    padding-right: 17px;
+  }
+
+  .order-card-footer {
+    padding-left: 17px;
+    padding-right: 17px;
   }
 }
