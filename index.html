@@ -1,0 +1,271 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MUSEO V2 | Dashboard</title>
+  <style>
+    :root {
+      --navy: #17283d;
+      --background: #f3f5f8;
+      --border: #e4e9f0;
+      --text: #1d2b3b;
+      --muted: #7a8796;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, "Malgun Gothic", sans-serif;
+      background: var(--background);
+      color: var(--text);
+    }
+
+    .sidebar {
+      position: fixed;
+      inset: 0 auto 0 0;
+      width: 240px;
+      background: var(--navy);
+      padding: 28px 18px;
+      color: white;
+    }
+
+    .brand {
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      margin-bottom: 42px;
+    }
+
+    .brand small {
+      display: block;
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 2px;
+      color: #aebed0;
+      margin-top: 7px;
+    }
+
+    .nav-title {
+      color: #8194a9;
+      font-size: 11px;
+      margin: 25px 12px 12px;
+    }
+
+    .nav-item {
+      display: block;
+      padding: 13px 14px;
+      color: #c7d3df;
+      text-decoration: none;
+      border-radius: 9px;
+      font-size: 13px;
+      margin-bottom: 5px;
+    }
+
+    .nav-item.active,
+    .nav-item:hover {
+      background: #30455f;
+      color: white;
+    }
+
+    .main {
+      margin-left: 240px;
+      padding: 35px;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+
+    h1 {
+      font-size: 25px;
+      margin: 0 0 8px;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .status {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 16px;
+      font-size: 12px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin-bottom: 25px;
+    }
+
+    .card, .panel {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px;
+    }
+
+    .card-label {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .card-value {
+      font-size: 30px;
+      font-weight: 800;
+    }
+
+    .panel h2 {
+      font-size: 16px;
+      margin: 0 0 20px;
+    }
+
+    .order {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .order:last-child { border-bottom: 0; }
+
+    .room {
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .menu {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 7px;
+    }
+
+    .badge {
+      font-size: 11px;
+      border-radius: 6px;
+      padding: 7px 11px;
+      white-space: nowrap;
+    }
+
+    .new { background: #e8f1ff; color: #2563eb; }
+    .cooking { background: #fff1d6; color: #a76700; }
+    .done { background: #e6f6eb; color: #17803d; }
+
+    @media (max-width: 950px) {
+      .cards { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 650px) {
+      .sidebar {
+        position: static;
+        width: 100%;
+        padding: 18px;
+      }
+
+      .brand { margin-bottom: 15px; }
+      .nav-title { margin-top: 15px; }
+      .main { margin-left: 0; padding: 20px; }
+      .cards { grid-template-columns: 1fr 1fr; gap: 10px; }
+      .card { padding: 15px; }
+      .card-value { font-size: 23px; }
+      .topbar { align-items: flex-start; gap: 12px; }
+    }
+  </style>
+</head>
+
+<body>
+  <aside class="sidebar">
+    <div class="brand">
+      MUSEO
+      <small>HOTEL OPERATIONS V2</small>
+    </div>
+
+    <div class="nav-title">OVERVIEW</div>
+    <a class="nav-item active" href="index.html">대시보드</a>
+
+    <div class="nav-title">F&B MANAGEMENT</div>
+    <a class="nav-item" href="pages/orders.html">주문관리</a>
+    <a class="nav-item" href="pages/menus.html">메뉴관리</a>
+    <a class="nav-item" href="pages/sets.html">세트메뉴 관리</a>
+    <a class="nav-item" href="pages/translations.html">번역관리</a>
+    <a class="nav-item" href="pages/sales.html">매출관리</a>
+
+    <div class="nav-title">HOTEL MANAGEMENT</div>
+    <a class="nav-item" href="#">객실 서비스 (예정)</a>
+    <a class="nav-item" href="#">하우스키핑 (예정)</a>
+    <a class="nav-item" href="#">시설관리 (예정)</a>
+
+    <div class="nav-title">SYSTEM</div>
+    <a class="nav-item" href="#">설정 (예정)</a>
+  </aside>
+
+  <main class="main">
+    <div class="topbar">
+      <div>
+        <h1>운영 대시보드</h1>
+        <div class="subtitle">MUSEO 호텔 통합 운영 현황</div>
+      </div>
+      <div class="status">● DEMO MODE</div>
+    </div>
+
+    <section class="cards">
+      <div class="card">
+        <div class="card-label">신규 주문</div>
+        <div class="card-value">08</div>
+      </div>
+      <div class="card">
+        <div class="card-label">진행 중</div>
+        <div class="card-value">05</div>
+      </div>
+      <div class="card">
+        <div class="card-label">완료 주문</div>
+        <div class="card-value">24</div>
+      </div>
+      <div class="card">
+        <div class="card-label">오늘 매출</div>
+        <div class="card-value">₩842K</div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>실시간 주문 현황 · 예시 데이터</h2>
+
+      <div class="order">
+        <div>
+          <div class="room">ROOM 501</div>
+          <div class="menu">스테이크 크림 파스타</div>
+        </div>
+        <span class="badge new">신규 주문</span>
+      </div>
+
+      <div class="order">
+        <div>
+          <div class="room">ROOM 803</div>
+          <div class="menu">셰프 추천 세트</div>
+        </div>
+        <span class="badge cooking">조리 중</span>
+      </div>
+
+      <div class="order">
+        <div>
+          <div class="room">ROOM 602</div>
+          <div class="menu">마르게리타 피자</div>
+        </div>
+        <span class="badge done">완료</span>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
