@@ -6,248 +6,298 @@
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0">
 
-  <title>MUSEO V2 | 룸서비스 주문관리</title>
+  <title>MUSEO V2 | 주문관리</title>
 
-  <!-- 공통 CSS -->
+  <!-- 공통 디자인 -->
   <link rel="stylesheet" href="../css/common.css">
 
-  <!-- 주문관리 전용 CSS -->
+  <!-- 주문관리 전용 디자인 -->
   <link rel="stylesheet" href="../css/pages/orders.css">
 </head>
 
 <body>
 
-  <!-- 관리자 사이드바 -->
-  <aside class="sidebar">
-    <div class="brand">
-      MUSEO
-      <small>HOTEL OPERATIONS V2</small>
-    </div>
+  <!-- 공통 사이드바 -->
+  <aside class="sidebar"></aside>
 
-    <div class="nav-title">OVERVIEW</div>
-    <a class="nav-item" href="../index.html">
-      대시보드
-    </a>
-
-    <div class="nav-title">F&B MANAGEMENT</div>
-    <a class="nav-item active" href="orders.html">
-      주문관리
-    </a>
-    <a class="nav-item" href="menus.html">
-      메뉴관리
-    </a>
-    <a class="nav-item" href="sets.html">
-      세트메뉴 관리
-    </a>
-    <a class="nav-item" href="translations.html">
-      번역관리
-    </a>
-    <a class="nav-item" href="sales.html">
-      매출관리
-    </a>
-
-    <div class="nav-title">HOTEL MANAGEMENT</div>
-    <a class="nav-item" href="#">
-      객실 서비스 (예정)
-    </a>
-    <a class="nav-item" href="#">
-      하우스키핑 (예정)
-    </a>
-    <a class="nav-item" href="#">
-      시설관리 (예정)
-    </a>
-
-    <div class="nav-title">SYSTEM</div>
-    <a class="nav-item" href="#">
-      설정 (예정)
-    </a>
-  </aside>
-
-  <!-- 주문관리 메인 -->
+  <!-- 메인 콘텐츠 -->
   <main class="main">
 
-    <div class="topbar">
+    <!-- 상단 헤더 -->
+    <header class="topbar">
       <div>
-        <h1>룸서비스 주문관리</h1>
+        <h1>주문관리</h1>
         <div class="subtitle">
-          실시간 주문 접수 및 처리 현황
+          룸서비스 주문 접수 및 진행 현황을
+          관리합니다.
         </div>
       </div>
 
-      <div class="status">● DEMO MODE</div>
-    </div>
+      <span class="status">
+        ● DEMO MODE
+      </span>
+    </header>
 
     <!-- 주문 상태 필터 -->
-    <div class="order-toolbar">
+    <section class="order-toolbar">
 
       <div class="order-tabs">
-        <button class="order-tab active"
-                data-filter="all">
-          전체
+
+        <button
+          class="order-tab active"
+          type="button"
+          data-filter="all">
+          전체 주문
         </button>
 
-        <button class="order-tab"
-                data-filter="new">
-          신규
+        <button
+          class="order-tab"
+          type="button"
+          data-filter="new">
+          신규 주문
         </button>
 
-        <button class="order-tab"
-                data-filter="cooking">
+        <button
+          class="order-tab"
+          type="button"
+          data-filter="cooking">
           조리 중
         </button>
 
-        <button class="order-tab"
-                data-filter="done">
+        <button
+          class="order-tab"
+          type="button"
+          data-filter="done">
           완료
         </button>
+
       </div>
 
-      <div class="status">
+      <span class="status">
         총 3건 · 예시 주문
-      </div>
-    </div>
+      </span>
 
-    <!-- 주문 카드 목록 -->
+    </section>
+
+    <!-- 주문 카드 영역 -->
     <section class="order-grid" id="orderGrid">
 
       <!-- 신규 주문 -->
       <article class="order-card" data-status="new">
+
         <div class="order-card-header">
           <div>
-            <div class="order-number">ORDER #1024</div>
-            <div class="order-room">ROOM 501</div>
+            <div class="order-number">
+              #1028
+            </div>
+
+            <div class="order-room">
+              객실 1203
+            </div>
           </div>
 
-          <span class="badge new">신규 주문</span>
+          <span class="badge new">
+            신규 주문
+          </span>
         </div>
 
         <div class="order-card-body">
+
           <div class="order-time">
-            주문시간 12:35
+            주문시간 20:41
           </div>
 
           <div class="order-menu-item">
-            <span>스테이크 크림 파스타 × 1</span>
-            <strong>24,000원</strong>
+            <span>스테이크 트러플 크림 파스타 × 1</span>
+            <strong>₩29,000</strong>
           </div>
 
           <div class="order-menu-item">
             <span>마르게리타 피자 × 1</span>
-            <strong>19,000원</strong>
+            <strong>₩23,000</strong>
           </div>
 
           <div class="order-request">
-            요청사항: 수저 2개 부탁드립니다.
+            <strong>요청사항</strong>
+            <p>수저 2세트 부탁드립니다.</p>
           </div>
 
           <div class="order-total">
             <span>총 결제금액</span>
-            <span>43,000원</span>
+            <strong>₩52,000</strong>
           </div>
+
         </div>
 
         <div class="order-card-footer">
-          <button class="action-btn btn-primary"
-                  data-action="accept">
-            접수
+
+          <button
+            type="button"
+            class="action-btn btn-primary"
+            data-action="accept">
+            주문 접수
           </button>
 
-          <button class="action-btn btn-danger"
-                  data-action="reject">
-            거절
+          <button
+            type="button"
+            class="action-btn btn-danger"
+            data-action="reject">
+            주문 거절
           </button>
 
-          <button class="action-btn btn-secondary"
-                  data-action="print">
+          <button
+            type="button"
+            class="action-btn btn-secondary"
+            data-action="print">
             인쇄
           </button>
+
         </div>
+
       </article>
 
       <!-- 조리 중 주문 -->
       <article class="order-card" data-status="cooking">
+
         <div class="order-card-header">
           <div>
-            <div class="order-number">ORDER #1025</div>
-            <div class="order-room">ROOM 803</div>
+            <div class="order-number">
+              #1027
+            </div>
+
+            <div class="order-room">
+              객실 806
+            </div>
           </div>
 
-          <span class="badge cooking">조리 중</span>
+          <span class="badge cooking">
+            조리 중
+          </span>
         </div>
 
         <div class="order-card-body">
+
           <div class="order-time">
-            주문시간 12:42
+            주문시간 20:33
           </div>
 
           <div class="order-menu-item">
-            <span>셰프 추천 세트 × 1</span>
-            <strong>52,000원</strong>
+            <span>한우 볼로네제 파스타 × 1</span>
+            <strong>₩24,000</strong>
+          </div>
+
+          <div class="order-menu-item">
+            <span>청포도 에이드 × 2</span>
+            <strong>₩19,000</strong>
           </div>
 
           <div class="order-request">
-            요청사항: 소스는 따로 부탁드립니다.
+            <strong>요청사항</strong>
+            <p>객실 문 앞에서 노크 부탁드립니다.</p>
           </div>
 
           <div class="order-total">
             <span>총 결제금액</span>
-            <span>52,000원</span>
+            <strong>₩43,000</strong>
           </div>
+
         </div>
 
         <div class="order-card-footer">
-          <button class="action-btn btn-primary"
-                  data-action="complete">
-            완료
+
+          <button
+            type="button"
+            class="action-btn btn-primary"
+            data-action="complete">
+            조리 완료
           </button>
 
-          <button class="action-btn btn-secondary"
-                  data-action="print">
+          <button
+            type="button"
+            class="action-btn btn-secondary"
+            data-action="print">
             인쇄
           </button>
+
         </div>
+
       </article>
 
       <!-- 완료 주문 -->
       <article class="order-card" data-status="done">
+
         <div class="order-card-header">
           <div>
-            <div class="order-number">ORDER #1026</div>
-            <div class="order-room">ROOM 602</div>
+            <div class="order-number">
+              #1026
+            </div>
+
+            <div class="order-room">
+              객실 602
+            </div>
           </div>
 
-          <span class="badge done">완료</span>
+          <span class="badge done">
+            완료
+          </span>
         </div>
 
         <div class="order-card-body">
+
           <div class="order-time">
-            주문시간 12:50
+            주문시간 20:15
           </div>
 
           <div class="order-menu-item">
-            <span>마르게리타 피자 × 1</span>
-            <strong>19,000원</strong>
+            <span>양송이 크림 스프 × 1</span>
+            <strong>₩12,000</strong>
+          </div>
+
+          <div class="order-menu-item">
+            <span>아이스 아메리카노 × 1</span>
+            <strong>₩7,000</strong>
+          </div>
+
+          <div class="order-request">
+            <strong>요청사항</strong>
+            <p>요청사항 없음</p>
           </div>
 
           <div class="order-total">
             <span>총 결제금액</span>
-            <span>19,000원</span>
+            <strong>₩19,000</strong>
           </div>
+
         </div>
 
         <div class="order-card-footer">
-          <button class="action-btn btn-secondary"
-                  data-action="print">
+
+          <button
+            type="button"
+            class="action-btn btn-secondary"
+            data-action="print">
             인쇄
           </button>
+
         </div>
+
       </article>
 
     </section>
+
   </main>
 
-  <!-- 주문관리 전용 JS -->
-  <script src="../js/modules/orders/orders.js" defer></script>
+  <!-- 공통 사이드바 -->
+  <script
+    src="../js/shared/sidebar.js"
+    defer>
+  </script>
+
+  <!-- 주문관리 기능 -->
+  <script
+    src="../js/modules/orders/orders.js"
+    defer>
+  </script>
 
 </body>
 </html>
